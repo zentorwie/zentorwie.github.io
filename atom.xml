@@ -4,7 +4,7 @@
   <title><![CDATA[Think & Hack]]></title>
   <link href="http://zentorwie.github.io/atom.xml" rel="self"/>
   <link href="http://zentorwie.github.io/"/>
-  <updated>2014-01-23T02:22:04+08:00</updated>
+  <updated>2014-01-26T16:37:13+08:00</updated>
   <id>http://zentorwie.github.io/</id>
   <author>
     <name><![CDATA[zentorwie]]></name>
@@ -35,6 +35,7 @@
 <li><code>octopress</code> &ndash; 直接用git从仓库克隆到本地，这个博客的程序</li>
 <li><code>rvm/ruby/jekyll</code> &ndash; octopress依赖软件包</li>
 <li><code>fcitx/fcitx-googlepinyin</code> &ndash; 中文输入</li>
+<li><code>shadowsocks/goagent</code> &ndash; 翻墙</li>
 </ul>
 
 
