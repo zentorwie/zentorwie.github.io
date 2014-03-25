@@ -1,0 +1,25 @@
+---
+layout: page
+title: "about"
+date: 2014-01-06 19:58
+comments: true
+sharing: true
+footer: true
+---
+
+#Hello, I'm zentorwie, a geek loving hacking.
+
+###I'm interesting in :
+
++   Lisp 
++   Emacs
++   GNU/Linux
++   C++
++   Algorithms
++   Mathematics
+
+###Contact me:
+
+*   [Github](https://github.com/zentorwie)
+*   [Google+](https://plus.google.com/110290812483557318181/posts)
+ 
