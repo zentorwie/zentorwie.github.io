@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: 
 title: "来自过去的信"
 date: 2013-12-31 01:39
 comments: true
@@ -43,7 +43,7 @@ categories: life
 Hope is a good thing, maybe the best of things. 
 {% endblockquote %} 
 
-救赎还未完成。救赎还要继续。
+<!-- 救赎还未完成。救赎还要继续。-->
 
 最后，
 Happy New Year!

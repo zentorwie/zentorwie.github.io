@@ -7,19 +7,21 @@ sharing: true
 footer: true
 ---
 
-#Hello, I'm zentorwie, a geek loving hacking.
+我是zentorwie
 
-###I'm interesting in :
+我喜欢下面这些东西：
 
-+   Lisp 
 +   Emacs
 +   GNU/Linux
++   Lisp 
 +   C++
++   Python
 +   Algorithms
 +   Mathematics
 
-###Contact me:
+你可以通过下面这些方式联系我：
 
+*   Email: zentorwie #at# gmail.com
 *   [Github](https://github.com/zentorwie)
 *   [Google+](https://plus.google.com/110290812483557318181/posts)
  

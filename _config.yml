@@ -4,7 +4,7 @@
 
 url: http://zentorwie.github.io
 title: Think & Hack
-subtitle: Hacking the world!
+subtitle: 追求代码的禅道
 author: zentorwie
 simple_search: http://google.com/search
 description: Freedom
@@ -73,13 +73,13 @@ github_skip_forks: true
 # twitter_tweet_button: true
 
 # Google +1
-google_plus_one: true
-google_plus_one_size: medium
+# google_plus_one: true
+# google_plus_one_size: medium
 
 # Google Plus Profile
 # Hidden: No visible button, just add author information to search results
-googleplus_user: zentorwie
-googleplus_hidden: false
+# googleplus_user: zentorwie
+# googleplus_hidden: false
 
 # Pinboard
 #pinboard_user:
@@ -90,8 +90,8 @@ googleplus_hidden: false
 #delicious_count: 3
 
 # Disqus Comments
-#disqus_short_name:
-#disqus_show_comment_count: false
+disqus_short_name: zentorwie
+disqus_show_comment_count: true
 
 # Google Analytics
 # google_analytics_tracking_id:
