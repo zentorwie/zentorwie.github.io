@@ -4,24 +4,24 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>zentorwie&#39;s blog</title>
+  <title>Unix进程调度策略 浅探 | zentorwie&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Unix进程调度策略 浅探这一周为了准备OS课程的Seminar而去研究了一下Unix的进程调度，从网上的资料和我查阅的纸质资料上看，研究System V的比较多，所以我就拿System V来做例子。
-需要注意的一点是，System V第一个版本是1983年发布的，Sytem V Release 4(1988)最成功的一个版本，离现在也有点久远了，*nix各种分支进化到现在和80年代比应该发生了比">
+  <meta name="description" content="这一周为了准备OS课程的Seminar而去研究了一下Unix的进程调度，从网上的资料和我查阅的纸质资料上看，研究System V的比较多，所以我就拿System V来做例子。
+需要注意的一点是，System V第一个版本是1983年发布的，Sytem V Release 4(1988)最成功的一个版本，离现在也有点久远了，*nix各种分支进化到现在和80年代比应该发生了比较大的变化，但是它们的设计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="zentorwie's blog">
+<meta property="og:title" content="Unix进程调度策略 浅探">
 <meta property="og:url" content="http://zentorwie.github.io/2016/03/17/Unix-scheduling/index.html">
 <meta property="og:site_name" content="zentorwie's blog">
-<meta property="og:description" content="Unix进程调度策略 浅探这一周为了准备OS课程的Seminar而去研究了一下Unix的进程调度，从网上的资料和我查阅的纸质资料上看，研究System V的比较多，所以我就拿System V来做例子。
-需要注意的一点是，System V第一个版本是1983年发布的，Sytem V Release 4(1988)最成功的一个版本，离现在也有点久远了，*nix各种分支进化到现在和80年代比应该发生了比">
+<meta property="og:description" content="这一周为了准备OS课程的Seminar而去研究了一下Unix的进程调度，从网上的资料和我查阅的纸质资料上看，研究System V的比较多，所以我就拿System V来做例子。
+需要注意的一点是，System V第一个版本是1983年发布的，Sytem V Release 4(1988)最成功的一个版本，离现在也有点久远了，*nix各种分支进化到现在和80年代比应该发生了比较大的变化，但是它们的设计">
 <meta property="og:image" content="http://zentorwie.github.io/unix-scheduling-1.png">
 <meta property="og:image" content="http://zentorwie.github.io/unix-scheduling-2.png">
 <meta property="og:image" content="http://zentorwie.github.io/unix-scheduling-3.png">
-<meta property="og:updated_time" content="2016-03-17T09:24:03.356Z">
+<meta property="og:updated_time" content="2016-03-17T09:38:47.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zentorwie's blog">
-<meta name="twitter:description" content="Unix进程调度策略 浅探这一周为了准备OS课程的Seminar而去研究了一下Unix的进程调度，从网上的资料和我查阅的纸质资料上看，研究System V的比较多，所以我就拿System V来做例子。
-需要注意的一点是，System V第一个版本是1983年发布的，Sytem V Release 4(1988)最成功的一个版本，离现在也有点久远了，*nix各种分支进化到现在和80年代比应该发生了比">
+<meta name="twitter:title" content="Unix进程调度策略 浅探">
+<meta name="twitter:description" content="这一周为了准备OS课程的Seminar而去研究了一下Unix的进程调度，从网上的资料和我查阅的纸质资料上看，研究System V的比较多，所以我就拿System V来做例子。
+需要注意的一点是，System V第一个版本是1983年发布的，Sytem V Release 4(1988)最成功的一个版本，离现在也有点久远了，*nix各种分支进化到现在和80年代比应该发生了比较大的变化，但是它们的设计">
   
     <link rel="alternative" href="/atom.xml" title="zentorwie&#39;s blog" type="application/atom+xml">
   
@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/emacs/" style="font-size: 10px;">emacs</a>
+						<a href="/tags/emacs/" style="font-size: 10px;">emacs</a> <a href="/tags/os/" style="font-size: 10px;">os</a> <a href="/tags/spacemacs/" style="font-size: 10px;">spacemacs</a> <a href="/tags/unix/" style="font-size: 10px;">unix</a>
 					</div>
 				</section>
 				
@@ -182,7 +182,7 @@
   
     <div class="article-meta">
       <a href="/2016/03/17/Unix-scheduling/" class="article-date">
-  	<time datetime="2016-03-17T09:24:03.360Z" itemprop="datePublished">2016-03-17</time>
+  	<time datetime="2016-03-17T09:38:47.347Z" itemprop="datePublished">2016-03-17</time>
 </a>
     </div>
   
@@ -191,9 +191,31 @@
       <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Unix进程调度策略 浅探
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/os/">os</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unix/">unix</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Unix_u8FDB_u7A0B_u8C03_u5EA6_u7B56_u7565__u6D45_u63A2"><a href="#Unix_u8FDB_u7A0B_u8C03_u5EA6_u7B56_u7565__u6D45_u63A2" class="headerlink" title="Unix进程调度策略 浅探"></a>Unix进程调度策略 浅探</h1><p>这一周为了准备OS课程的Seminar而去研究了一下Unix的进程调度，从网上的资料和我查阅的纸质资料上看，研究System V的比较多，所以我就拿System V来做例子。</p>
+        <p>这一周为了准备OS课程的Seminar而去研究了一下Unix的进程调度，从网上的资料和我查阅的纸质资料上看，研究System V的比较多，所以我就拿System V来做例子。</p>
 <p>需要注意的一点是，System V第一个版本是1983年发布的，Sytem V Release 4(1988)最成功的一个版本，离现在也有点久远了，*nix各种分支进化到现在和80年代比应该发生了比较大的变化，但是它们的设计思想还是值得研究一番的。</p>
 <h3 id="Unix_u542F_u52A8_u8FC7_u7A0B"><a href="#Unix_u542F_u52A8_u8FC7_u7A0B" class="headerlink" title="Unix启动过程"></a>Unix启动过程</h3><p><img src="unix-scheduling-1.png" alt="Alt text"></p>
 <ul>
@@ -306,7 +328,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Unix-scheduling" data-title="" data-url="http://zentorwie.github.io/2016/03/17/Unix-scheduling/"></div>
+	<div class="ds-thread" data-thread-key="Unix-scheduling" data-title="Unix进程调度策略 浅探" data-url="http://zentorwie.github.io/2016/03/17/Unix-scheduling/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
