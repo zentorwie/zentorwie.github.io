@@ -1,7 +1,0 @@
-title: Spacemacs 技巧记录
-date: 2015-12-28 23:07:48
-tags: [emacs,spacemacs]
----
-This list is for spacemacs tricks I found in everyday use.
-
-- `K`: woman, man in emacs. Used for look up manual of Linux commands and system calls.
